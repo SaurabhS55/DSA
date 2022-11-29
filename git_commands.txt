@@ -1,0 +1,6 @@
+1) git status: used to see status of git repository.
+2)git init: used to initialize git repository.(used to create .git file in our working directory).
+3)git add --a :used to add all files on staging.
+4)git add <file-name> : add <file-name>to staging.
+5) git commit -m "Initial Commit": creates snapshot of files and commit to repository.
+6)git log:shows a list of all the commits made to a repository.

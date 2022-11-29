@@ -1,4 +1,4 @@
-include<stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
 int fact(int);
@@ -18,4 +18,5 @@ int fact(int n){
     else{
         return n*fact(n-1);
     }
+
 }
