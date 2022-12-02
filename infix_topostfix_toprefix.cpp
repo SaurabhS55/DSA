@@ -93,7 +93,9 @@ void toPrefix(string s){
 }
 
 int main(){
-    string s="(A+B)*(C+D)";
+    string s;
+    cout<<"Enter expression:- \n";
+    cin>>s;
     toPostfix(s);
     toPrefix(s);
     return 0;
