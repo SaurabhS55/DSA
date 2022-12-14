@@ -4,3 +4,4 @@
 4)git add <file-name> : add <file-name>to staging.
 5) git commit -m "Initial Commit": creates snapshot of files and commit to repository.
 6)git log:shows a list of all the commits made to a repository.
+7)git push:used to push staged files or snapshot of files to git.
