@@ -1,7 +1,12 @@
-// Representation of stack using Array
+// // Representation of stack using Array
 // #include<stdio.h>
+// #include<stdlib.h>
+// #define max 10
 // int a[10];
-// int top=-1,max=sizeof(a);
+// int top=-1;
+// void push();
+// void pop();
+// void traverse();
 // int main(){
 //     int ch;
 //     do{
@@ -25,11 +30,11 @@
 //     }while(ch!=4);
 // }
 // int isFull(){
-//     if(top<max){
-//         return 1;
+//     if(top==max-1){
+//         return 0;
 //     }
 //     else{
-//         return 0;
+//         return 1;
 //     }
 
 // }
@@ -51,13 +56,21 @@
 //         a[top]=e;
 //         printf("Element inserted...\n");
 //     }
+//     else{
+
+//     printf("stack full");
+//     }
 // }
 // void pop(){
 //     if(isEmpty()){
 //         int d;
 //         d=a[top];
 //         top--;
-//         printf("%d is deleted from stack\n");
+//         printf("%d is deleted from stack\n",d);
+//     }
+//     else{
+
+//     printf("stack is empty");
 //     }
 // }
 // void traverse(){
@@ -66,88 +79,12 @@
 //             printf("\n%d",a[i]);
 //         }
 //     }
+//     else{
+
+//     printf("satck is empty");
+//     }
 // }
 
-
-//stack using doubly link list;
-// #include<stdio.h>
-// struct node{
-//     struct node* prev;
-//     int data;
-//     struct node* next;
-// };
-// struct node* top,*temp;
-// void push(){
-//     temp=(struct node*)malloc(sizeof(struct node));
-//     printf("Enter number ");
-//     int ele;
-//     scanf("%d",&ele);
-//     temp->data=ele;
-//     temp->next=NULL;
-//     temp->prev=NULL;
-//     if(top==NULL){
-//         top=temp;
-//     }
-//     else{
-//         while(top->next!=NULL){
-//             top=top->next;
-//         }
-//         top->next=temp;
-//         temp->prev=top;
-//         top=temp;
-//     }
-//     printf("element inserted...");
-    
-// }
-// void pop(){
-//     if(top==NULL){
-//         printf("stack is empty");
-//     }
-//     else{
-//         struct node* q=top;
-//         int d=q->data;
-//         top=top->prev;
-//         free(q);
-        
-//     printf("%d element deleted...",d);
-//     }
-
-// }
-// void traverse(){
-//     if(top==NULL){
-//         printf("stack is empty");
-//     }
-//     else{
-//         struct node* q=top;
-//         while(q!=NULL){
-//             printf("%d\n",q->data);
-//             q=q->prev;
-//         }
-//     }
-// }
-// int main(){
-//     int ch;
-//     do{
-//         printf("\n 1.push \n 2.pop \n 3.travese \n 4.exit\n");
-//         scanf("%d",&ch);
-//         switch (ch)
-//         {
-//         case 1:push();
-//             break;
-//         case 2:pop();
-//             break;
-//         case 3:traverse();
-//             break;
-//         case 4:exit(0);
-//             break;
-        
-//         default:
-//         printf("wrong choice");
-//             break;
-//         }
-//     }while(ch!=4);
-//     return 0;
-// }
 
 // stack representation using singly linked representation
 
@@ -156,7 +93,6 @@ struct node{
     int data;
     struct node* next;
 }*top;
-
 void push(){
     struct node* temp=(struct node*)malloc(sizeof(struct node));
     int ele;

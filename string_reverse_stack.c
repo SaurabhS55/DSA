@@ -24,14 +24,12 @@ char pop(){
 int main(){
     char ch[max];
     printf("Enter your String\n");
-    for(int i=0;i<max;i++){
-        scanf("%c",&ch[i]);
-    }
-    for(int i=0;i<sizeof(ch);i++){
+    scanf("%s",ch);
+    for(int i=0;ch[i]!='\0';i++){
         push(ch[i]);
     }
     
-    for(int i=0;i<sizeof(ch);i++){
+    for(int i=0;i<ch[i]!='\0';i++){
             printf("%c",pop());
         
     }
