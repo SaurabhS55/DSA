@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 struct node
 {
     int data;
@@ -108,7 +108,7 @@ void deleteatbeg()
     {
         struct node *q = start;
         int data = q->data;
-        start=q->next;
+        start = q->next;
         printf("%d is deleted from list", data);
         free(q);
     }
@@ -197,7 +197,7 @@ void traverse()
         {
             printf("%d\t", q->data);
             q = q->next;
-        }while (q!= NULL);
+        } while (q != NULL);
     }
 }
 void count()
@@ -250,13 +250,32 @@ void search()
         }
     }
 }
+void reverse()
+{
+    if (start == NULL)
+    {
+        printf("list is empty");
+    }
+    else{
+        struct node* p=NULL;
+        struct node* c=start;
+        struct node* n=NULL;
+        while(c!=NULL){
+            n=c->next;
+            c->next=p;
+            p=c;
+            c=n;
+        }
+        start=p;
+    }
+}
 int main()
 {
     // node n;
     int choice = 0;
     do
     {
-        printf("\nselect which operation you want to perform on list:-\n1.Insertion\n2.Deletion\n3.Travering\n4.serching node\n5.counting nodes\n6.exit");
+        printf("\nselect which operation you want to perform on list:-\n1.Insertion\n2.Deletion\n3.Travering\n4.serching node\n5.counting nodes\n6.reverse list\n7.exit");
         printf("\nEnter your choice\n");
         scanf("%d", &choice);
         switch (choice)
@@ -318,12 +337,15 @@ int main()
             count();
             break;
         case 6:
+            reverse();
+            break;
+        case 7:
             exit(0);
             break;
         default:
             printf("\nwrong choice\n");
         }
-    } while (choice != 6);
+    } while (choice != 7);
     // insertatbeg();
     // insertatbeg();
     // insertatend();
