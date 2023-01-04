@@ -80,7 +80,7 @@ void display()
 	{
 		for (int i = 0; i <= size; i++)
 		{
-			printf("(%d, %d)\n", pr[i].value, pr[i].priority);
+			printf("(%d, %d) ", pr[i].value, pr[i].priority);
 		}
 	}
 }

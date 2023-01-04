@@ -1,7 +1,7 @@
 // circular queue implementation using array
 #include <stdio.h>
 #include <stdlib.h>
-#define max 10
+#define max 5
 int q[max], r = -1, f = -1;
 void enque()
 {
@@ -51,29 +51,21 @@ void deque()
 }
 void traverse()
 {
-    if (f == -1)
+    if (f == -1 && r==-1)
     {
         printf("\n queue underflow");
     }
-    else if (f <= r)
-    {
-        for (int i = f; i <= r; i++)
-        {
-            printf("%d ", q[i]);
+    else{
+        int i=f;
+        while(i!=r){
+            printf("%d ",q[i]);
+            i=(i+1)%max;
         }
+        printf("%d ",q[i]);
     }
-    else
-    {
-        for (int i = f; i < max; i++)
-        {
-            printf("%d ", q[i]);
-        }
-        for (int i = 0; i <= r; i++)
-        {
-            printf("%d ", q[i]);
-        }
-    }
+
 }
+
 int main()
 {
     int ch;
@@ -93,7 +85,7 @@ int main()
             traverse();
             break;
         case 4:
-            exit(0);
+            exit(-1);
             break;
 
         default:

@@ -146,7 +146,7 @@ void deleteatpos(int pos)
             int d = r->data;
             q->next = r->next;
             r->next = NULL;
-            printf("\n%d is deleted from list..");
+            printf("\n%d is deleted from list..",d);
             free(r);
     }
 }
@@ -160,7 +160,7 @@ void deleteafternode(int d)
     {
         struct node *q = start;
         struct node *r = q->next;
-        while (r->data != d)
+        while (q->data != d)
         {
             q = q->next;
             r = r->next;
@@ -168,7 +168,7 @@ void deleteafternode(int d)
             int d = r->data;
             q->next = r->next;
             r->next = NULL;
-            printf("\n%d is deleted from list..");
+            printf("\n%d is deleted from list..",d);
             free(r);
     }
 }

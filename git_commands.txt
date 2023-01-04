@@ -5,3 +5,12 @@
 5) git commit -m "Initial Commit": creates snapshot of files and commit to repository.
 6)git log:shows a list of all the commits made to a repository.
 7)git push:used to push staged files or snapshot of files to git.
+8)rm -rf .git: used to delete git repositiory.
+9)git clone <url> "name":used to clone remote git repositiory with specified name.
+10) git diff: git diff command finds the differnce between working directory and staging area.
+11) git diff --staged: it find difference between the previous commit and staging area.
+12) git add. :used to add all files on staging.
+13) git commit -a -m "msg":It is used creat snapshot of all files by directly staging all files.
+14) git rm <file-name>: It is used to remove file from working directory as well as from staging area.
+15) git rm --cached <file-name>: It is used to unstage file from staging area.
+16) git mv <file1> <file2>: it is used to rename file1 to file2.
