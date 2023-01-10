@@ -76,7 +76,9 @@ int main(){
     root->left=create(2);
     root->right=create(3);
     root->left->left=create(4);
-    root->left->right=create(5);
+    root
+    ->left->right=create(5);
+
     inorder(root);
     printf("\n");
     preorder(root);
