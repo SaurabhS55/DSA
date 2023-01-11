@@ -1,121 +1,147 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct node{
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
     int data;
-    struct node* next;
-    struct node* prev;
-}*start;
-struct node* create(int ele){
-    struct node *temp=(struct node*)malloc(sizeof(struct node));
-    temp->data=ele;
-    temp->prev=NULL;
-    temp->next=NULL;
+    struct node *next;
+    struct node *prev;
+} *start;
+struct node *create(int ele)
+{
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = ele;
+    temp->prev = NULL;
+    temp->next = NULL;
     return temp;
 }
-void insertatbeg(struct node* temp){
-    if(start==NULL){
-        start=temp;
+void insertatbeg(struct node *temp)
+{
+    if (start == NULL)
+    {
+        start = temp;
     }
-    else{
-        temp->next=start;
-        start->prev=temp;
-        start=temp;
+    else
+    {
+        temp->next = start;
+        start->prev = temp;
+        start = temp;
     }
 }
-void insertatend(struct node* temp){
-    if(start==NULL){
-        start=temp;
+void insertatend(struct node *temp)
+{
+    if (start == NULL)
+    {
+        start = temp;
     }
-    else{
-        struct node* q=start;
-        while(q->next!=NULL){
-            q=q->next;
+    else
+    {
+        struct node *q = start;
+        while (q->next != NULL)
+        {
+            q = q->next;
         }
-        q->next=temp;
-        temp->prev=q;
+        q->next = temp;
+        temp->prev = q;
     }
 }
-void insertatpos(struct node* temp,int pos){
-    if(start==NULL){
-        start=temp;
+void insertatpos(struct node *temp, int pos)
+{
+    if (start == NULL)
+    {
+        start = temp;
     }
-    else{
-        struct node* q=start;
-        for(int i=0;i<pos-1;++i){
-            q=q->next;
+    else
+    {
+        struct node *q = start;
+        for (int i = 0; i < pos - 1; ++i)
+        {
+            q = q->next;
         }
-        q->next->prev=temp;
-        temp->next=q->next;
-        q->next=temp;
-        temp->prev=q;
+        temp->next = q->next;
+        q->next->prev = temp;
+        temp->prev = q;
+        q->next = temp;
     }
 }
-void deleteatbeg(){
-    if(start==NULL){
+void deleteatbeg()
+{
+    if (start == NULL)
+    {
         printf("\n List is empty..");
     }
-    else{
-        struct node *q=start;
-        int d=q->data;
-        start=start->next;
-        start->prev=NULL;
+    else
+    {
+        struct node *q = start;
+        int d = q->data;
+        start = start->next;
+        start->prev = NULL;
         free(q);
-        printf("\n %d is deleted from list..",d);
+        printf("\n %d is deleted from list..", d);
     }
 }
-void deleteatend(){
-    if(start==NULL){
+void deleteatend()
+{
+    if (start == NULL)
+    {
         printf("\n List is empty..");
     }
-    else{
-        struct node *q=start;
+    else
+    {
+        struct node *q = start;
         // struct node *r=q->next;
-        while(q->next!=NULL){
-            q=q->next;
+        while (q->next != NULL)
+        {
+            q = q->next;
             // r=r->next;
         }
-        int d=q->data;
-        q->prev->next=NULL;
+        int d = q->data;
+        q->prev->next = NULL;
         free(q);
-        printf("\n %d is deleted from list..",d);
+        printf("\n %d is deleted from list..", d);
     }
 }
-void deleteatpos(int pos){
-    if(start==NULL){
+void deleteatpos(int pos)
+{
+    if (start == NULL)
+    {
         printf("\n List is empty..");
     }
-    else{
-        struct node *q=start;
-        struct node *r=q->next;
-        for (int i=0;i<pos-1;++i){
-            q=q->next;
-            r=r->next;
-        }
-        int d=r->data;
-        q->next=r->next;
-        r->next->prev=q;
-        free(r);
-        printf("\n %d is deleted from list..",d);
-    }
-}
-void traverse(){
-    if(start==NULL){
-        printf("\n List is empty..");
-    }
-    else{
-        struct node* q=start;
-        while (q!=NULL)
+    else
+    {
+        struct node *q = start;
+        struct node *r = q->next;
+        for (int i = 0; i < pos - 1; ++i)
         {
-            printf("%d ",q->data);
-            q=q->next;
+            q = q->next;
+            r = r->next;
         }
-        
+        int d = r->data;
+        q->next = r->next;
+        r->next->prev = q;
+        free(r);
+        printf("\n %d is deleted from list..", d);
+    }
+}
+void traverse()
+{
+    if (start == NULL)
+    {
+        printf("\n List is empty..");
+    }
+    else
+    {
+        struct node *q = start;
+        while (q != NULL)
+        {
+            printf("%d ", q->data);
+            q = q->next;
+        }
     }
 }
 int main()
 {
     // node n;
-    int choice = 0, pos,ele;
+    int choice = 0, pos, ele;
     struct node *temp;
     do
     {

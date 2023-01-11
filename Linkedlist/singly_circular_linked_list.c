@@ -68,24 +68,24 @@ void insertatpos(struct node *temp, int pos)
             q->next = temp;
     }
 }
-void insertafternode(struct node *temp, int d)
-{
-    if (start == NULL)
-    {
-        start = temp;
-        start->next = start;
-    }
-    else
-    {
-        struct node *q = start;
-        while (q->data != d)
-        {
-            q = q->next;
-        }
-            temp->next = q->next;
-            q->next = temp;
-    }
-}
+// void insertafternode(struct node *temp, int d)
+// {
+//     if (start == NULL)
+//     {
+//         start = temp;
+//         start->next = start;
+//     }
+//     else
+//     {
+//         struct node *q = start;
+//         while (q->data != d)
+//         {
+//             q = q->next;
+//         }
+//             temp->next = q->next;
+//             q->next = temp;
+//     }
+// }
 void deleteatbeg()
 {
     if (start == NULL)
@@ -150,28 +150,28 @@ void deleteatpos(int pos)
             free(r);
     }
 }
-void deleteafternode(int d)
-{
-    if (start == NULL)
-    {
-        printf("\n List is empty..");
-    }
-    else
-    {
-        struct node *q = start;
-        struct node *r = q->next;
-        while (q->data != d)
-        {
-            q = q->next;
-            r = r->next;
-        }
-            int d = r->data;
-            q->next = r->next;
-            r->next = NULL;
-            printf("\n%d is deleted from list..",d);
-            free(r);
-    }
-}
+// void deleteafternode(int d)
+// {
+//     if (start == NULL)
+//     {
+//         printf("\n List is empty..");
+//     }
+//     else
+//     {
+//         struct node *q = start;
+//         struct node *r = q->next;
+//         while (q->data != d)
+//         {
+//             q = q->next;
+//             r = r->next;
+//         }
+//             int d = r->data;
+//             q->next = r->next;
+//             r->next = NULL;
+//             printf("\n%d is deleted from list..",d);
+//             free(r);
+//     }
+// }
 void traverse()
 {
     if (start == NULL)
@@ -188,54 +188,54 @@ void traverse()
         } while (q != start);
     }
 }
-void count()
-{
-    if (start == NULL)
-    {
-        printf("\n List is empty..");
-    }
-    else
-    {
-        struct node *q = start;
-        int c = 0;
-        do
-        {
-            ++c;
-            q = q->next;
-        } while (q != start);
-        printf("count=%d", c);
-    }
-}
-void search(int key)
-{
-    if (start == NULL)
-    {
-        printf("\n List is empty..");
-    }
-    else
-    {
-        struct node *q = start;
-        int f = 0, pos = 0;
-        do
-        {
-            if (key == q->data)
-            {
-                f = 1;
-                break;
-            }
-            ++pos;
-            q = q->next;
-        } while (q != start);
-        if (f == 1)
-        {
-            printf("element %d found at position %d", key, pos);
-        }
-        else
-        {
-            printf("element not found");
-        }
-    }
-}
+// void count()
+// {
+//     if (start == NULL)
+//     {
+//         printf("\n List is empty..");
+//     }
+//     else
+//     {
+//         struct node *q = start;
+//         int c = 0;
+//         do
+//         {
+//             ++c;
+//             q = q->next;
+//         } while (q != start);
+//         printf("count=%d", c);
+//     }
+// }
+// void search(int key)
+// {
+//     if (start == NULL)
+//     {
+//         printf("\n List is empty..");
+//     }
+//     else
+//     {
+//         struct node *q = start;
+//         int f = 0, pos = 0;
+//         do
+//         {
+//             if (key == q->data)
+//             {
+//                 f = 1;
+//                 break;
+//             }
+//             ++pos;
+//             q = q->next;
+//         } while (q != start);
+//         if (f == 1)
+//         {
+//             printf("element %d found at position %d", key, pos);
+//         }
+//         else
+//         {
+//             printf("element not found");
+//         }
+//     }
+// }
 int main()
 {
     // node n;
@@ -243,13 +243,13 @@ int main()
     struct node *temp;
     do
     {
-        printf("\nselect which operation you want to perform on list:-\n1.Insertion\n2.Deletion\n3.Travering\n4.serching node\n5.counting nodes\n6.exit");
+        printf("\nselect which operation you want to perform on list:-\n1.Insertion\n2.Deletion\n3.Travering\n4.exit");
         printf("\nEnter your choice\n");
         scanf("%d", &choice);
         switch (choice)
         {
         case 1:
-            printf("\nyou have selected insertion operation\n\nwhat do you want?\n1.insert at beginning\n2.insert at end\n3.insert at given position\n4.insert after node\n");
+            printf("\nyou have selected insertion operation\n\nwhat do you want?\n1.insert at beginning\n2.insert at end\n3.insert at given position\n");
             int ch;
             scanf("%d", &ch);
             switch (ch)
@@ -275,21 +275,21 @@ int main()
                 scanf("%d", &pos);
                 insertatpos(temp, pos);
                 break;
-            case 4:
-                printf("\n Enter data\n");
-                scanf("%d", &ele);
-                temp = create(ele);
-                printf("\n Enter node value\n");
-                int d;
-                scanf("%d", &d);
-                insertafternode(temp, d);
-                break;
+            // case 4:
+            //     printf("\n Enter data\n");
+            //     scanf("%d", &ele);
+            //     temp = create(ele);
+            //     printf("\n Enter node value\n");
+            //     int d;
+            //     scanf("%d", &d);
+            //     insertafternode(temp, d);
+            //     break;
             default:
                 printf("\nwrong choice\n");
             }
             break;
         case 2:
-            printf("\nyou have selected deletion operation\n\nwhat do you want?\n1.delete at beginning\n2.delete at end\n3.delete at given position\n4.delete after node\n");
+            printf("\nyou have selected deletion operation\n\nwhat do you want?\n1.delete at beginning\n2.delete at end\n3.delete at given position\n");
             // int ch;
             scanf("%d", &ch);
             switch (ch)
@@ -306,12 +306,12 @@ int main()
                 scanf("%d", &pos);
                 deleteatpos(pos);
                 break;
-            case 4:
-                printf("\n Enter node value\n");
-                int d;
-                scanf("%d", &d);
-                deleteafternode(d);
-                break;
+            // case 4:
+            //     printf("\n Enter node value\n");
+            //     int d;
+            //     scanf("%d", &d);
+            //     deleteafternode(d);
+            //     break;
             default:
                 printf("\nwrong choice\n");
             }
@@ -320,22 +320,22 @@ int main()
             printf("\nYou have selected travesing operation\n");
             traverse();
             break;
+        // case 4:
+        //     printf("\nYou have selected searching node operation\n");
+        //     printf("Enter key");
+        //     scanf("%d", &key);
+        //     search(key);
+        //     break;
+        // case 5:
+        //     printf("\nYou have selected counting node operation\n");
+        //     count();
+        //     break;
         case 4:
-            printf("\nYou have selected searching node operation\n");
-            printf("Enter key");
-            scanf("%d", &key);
-            search(key);
-            break;
-        case 5:
-            printf("\nYou have selected counting node operation\n");
-            count();
-            break;
-        case 6:
             exit(0);
             break;
         default:
             printf("\nwrong choice\n");
         }
-    } while (choice != 6);
+    } while (choice != 4);
     return 0;
 }

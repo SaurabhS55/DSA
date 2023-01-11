@@ -7,7 +7,7 @@ int main(){
     printf("Enter number");
     scanf("%d",&n);
     f=fact(n);
-    printf("Factorial= %d",n);
+    printf("Factorial= %d",f);
     return 0;
 
 }

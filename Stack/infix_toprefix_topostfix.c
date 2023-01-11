@@ -3,16 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// Stack type
 struct Stack
 {
     int top;
     int cap;
     int *array;
 };
-
-// Stack Operations
 struct Stack *createStack(int cap)
 {
     struct Stack *stack = (struct Stack *)malloc(sizeof(struct Stack));
@@ -42,25 +38,16 @@ char pop(struct Stack *stack)
 {
     if (!isEmpty(stack))
         return stack->array[stack->top--];
-    // return '$';
 }
 
 void push(struct Stack *stack, char op)
 {
     stack->array[++stack->top] = op;
 }
-
-// A utility function to check if
-// the given character is operand
 int isOperand(char ch)
 {
     return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
 }
-
-// A utility function to return
-// precedence of a given operator
-// Higher returned value means
-// higher precedence
 int Prec(char ch)
 {
     switch (ch)
@@ -78,54 +65,36 @@ int Prec(char ch)
     }
     return -1;
 }
-
-// The main function that
-// converts given infix expression
-// to postfix expression.
 int infixToPostfix(char *exp)
 {
     int i, k;
-
-    // Create a stack of capacity
-    // equal to expression size
     struct Stack *stack = createStack(strlen(exp));
-    if (!stack) // See if stack was created successfully
+    if (!stack)
         return -1;
     printf("\nInfix:%s", exp);
-    for (i = 0, k = -1; exp[i]!='\0'; ++i)
+    for (i = 0, k = -1; exp[i] != '\0'; ++i)
     {
-
-        // If the scanned character is
-        // an operand, add it to output.
         if (isOperand(exp[i]))
             exp[++k] = exp[i];
-
-        // If the scanned character is an
-        // ‘(‘, push it to the stack.
         else if (exp[i] == '(')
             push(stack, exp[i]);
-
-        // If the scanned character is an ‘)’,
-        // pop and output from the stack
-        // until an ‘(‘ is encountered.
         else if (exp[i] == ')')
         {
             while (!isEmpty(stack) && peek(stack) != '(')
                 exp[++k] = pop(stack);
-                pop(stack);
+            pop(stack);
         }
-        else if(exp[i]==' '){
+        else if (exp[i] == ' ')
+        {
             continue;
         }
-        else // an operator is encountered
+        else
         {
             while (!isEmpty(stack) && Prec(exp[i]) <= Prec(peek(stack)))
                 exp[++k] = pop(stack);
             push(stack, exp[i]);
         }
     }
-
-    // pop all the operators from the stack
     while (!isEmpty(stack))
         exp[++k] = pop(stack);
 
@@ -135,63 +104,42 @@ int infixToPostfix(char *exp)
 int infixToPrefix(char *exp)
 {
     int i, k;
-
-    // Create a stack of capacity
-    // equal to expression size
-
     struct Stack *stack = createStack(strlen(exp));
-    if (!stack) // See if stack was created successfully
+    if (!stack)
         return -1;
-    // printf("\nInfix:%s", strrev(exp));
-    for (i = 0, k = -1; exp[i]!='\0'; ++i)
+    for (i = 0, k = -1; exp[i] != '\0'; ++i)
     {
-
-        // If the scanned character is
-        // an operand, add it to output.
         if (isOperand(exp[i]))
             exp[++k] = exp[i];
-
-        // If the scanned character is an
-        // ‘(‘, push it to the stack.
         else if (exp[i] == ')')
             push(stack, exp[i]);
-
-        // If the scanned character is an ‘)’,
-        // pop and output from the stack
-        // until an ‘(‘ is encountered.
         else if (exp[i] == '(')
         {
             while (!isEmpty(stack) && peek(stack) != ')')
                 exp[++k] = pop(stack);
-                pop(stack);
+            pop(stack);
         }
-        else if(exp[i]==' '){
+        else if (exp[i] == ' ')
+        {
             continue;
         }
-        else // an operator is encountered
+        else
         {
             while (!isEmpty(stack) && Prec(exp[i]) < Prec(peek(stack)))
                 exp[++k] = pop(stack);
             push(stack, exp[i]);
         }
     }
-
-    // pop all the operators from the stack
     while (!isEmpty(stack))
         exp[++k] = pop(stack);
-
     exp[++k] = '\0';
     printf("\nPrefix:%s", strrev(exp));
 }
-
-// Driver's code
 int main()
 {
     char *exp;
     printf("Enter Expression:");
     gets(exp);
-
-    // Function call
     infixToPostfix(exp);
     infixToPrefix(strrev(exp));
     return 0;

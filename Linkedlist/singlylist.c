@@ -72,32 +72,6 @@ void insertatpos()
         q->next = temp;
     }
 }
-void insertafternode()
-{
-    struct node *temp = (struct node *)malloc(sizeof(struct node));
-    int ele;
-    printf("\nEnter data");
-    scanf("%d", &ele);
-    temp->data = ele;
-    temp->next = NULL;
-    if (start == NULL)
-    {
-        start = temp;
-    }
-    else
-    {
-        int val;
-        printf("Enter node value");
-        scanf("%d", &val);
-        struct node *q = start;
-        while (q->data != val)
-        {
-            q = q->next;
-        }
-        temp->next = q->next;
-        q->next = temp;
-    }
-}
 void deleteatbeg()
 {
     if (start == NULL)
@@ -155,31 +129,6 @@ void deleteatpos()
         int data = r->data;
         q->next = r->next;
         r->next = NULL;
-        printf("%d is deleted from list", data);
-        free(r);
-    }
-}
-void deleteafternode()
-{
-    if (start == NULL)
-    {
-        printf("List is empty");
-    }
-    else
-    {
-        printf("\nEnter value");
-        int val;
-        scanf("%d", &val);
-        struct node *q = start;
-        struct node *r = q->next;
-        while (q->data != val)
-        {
-            q = q->next;
-            r = r->next;
-        }
-        q->next = r->next;
-        r->next = NULL;
-        int data = r->data;
         printf("%d is deleted from list", data);
         free(r);
     }
@@ -295,9 +244,6 @@ int main()
             case 3:
                 insertatpos();
                 break;
-            case 4:
-                insertafternode();
-                break;
             default:
                 printf("\nwrong choice\n");
             }
@@ -316,9 +262,6 @@ int main()
                 break;
             case 3:
                 deleteatpos();
-                break;
-            case 4:
-                deleteafternode();
                 break;
             default:
                 printf("\nwrong choice\n");
@@ -346,12 +289,5 @@ int main()
             printf("\nwrong choice\n");
         }
     } while (choice != 7);
-    // insertatbeg();
-    // insertatbeg();
-    // insertatend();
-    // insertatpos();
-    // traverse();
-    // search();
-    // count();
     return 0;
 }
