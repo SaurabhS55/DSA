@@ -1,49 +1,49 @@
 #include <stdio.h>
 void merge(int arr[], int p, int q, int r)
 {
-    int n1 = q - p + 1;
-    int n2 = r - q;
-    int L[n1], M[n2];
-    for (int i = 0; i < n1; i++)
-        L[i] = arr[p + i];
-    for (int j = 0; j < n2; j++)
-        M[j] = arr[q + 1 + j];
-    int i, j, k;
-    i = 0;
-    j = 0;
-    k = p;
-    while (i < n1 && j < n2)
+    int i=p;
+    int j=q+1;
+    int k=p;
+    int b[r];
+    while(i<=q && j<=r)
     {
-        if (L[i] <= M[j])
+        if(arr[i]<=arr[j])
         {
-            arr[k] = L[i];
+            b[k]=arr[i];
             i++;
         }
         else
         {
-            arr[k] = M[j];
+            b[k]=arr[j];
             j++;
         }
         k++;
     }
-    while (i < n1)
-    {
-        arr[k] = L[i];
-        i++;
-        k++;
+    if(i>q){
+        while(j<=r)
+        {
+            b[k]=arr[j];
+            j++;
+            k++;
+        }
     }
-    while (j < n2)
-    {
-        arr[k] = M[j];
-        j++;
-        k++;
+    else{
+        while(i<=r)
+        {
+            b[k]=arr[i];
+            i++;
+            k++;
+        }
+    }
+    for(i=p;i<=r;i++){
+        arr[i]=b[i];
     }
 }
 void mergeSort(int arr[], int l, int r)
 {
     if (l < r)
     {
-        int m = l + (r - l) / 2;
+        int m = (l + r) / 2;
         mergeSort(arr, l, m);
         mergeSort(arr, m + 1, r);
         merge(arr, l, m, r);
